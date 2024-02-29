@@ -1,5 +1,6 @@
 
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import Router from "./router/Router";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         />
       </GoogleOAuthProvider>
 
-   
+   <Router/>
     </div>
   );
 }

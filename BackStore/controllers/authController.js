@@ -22,3 +22,4 @@ export const register = async (req, res) => {
   const newUser = await userModels.create({ name, email, password: hash });
   res.send(newUser);
 };
+1
