@@ -8,7 +8,7 @@ export const getGoogleLink = (req, res) => {
 
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(user)
+
   if (!(name && email && password)) {
     return res.status(400).send({ msg: "pleas Enter all field" });
   }
@@ -22,4 +22,26 @@ export const register = async (req, res) => {
   const newUser = await userModels.create({ name, email, password: hash });
   res.send(newUser);
 };
-1
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!(email, password)) {
+    return res.status(400).send({ mas: "pleas Enter all field" });
+  }
+
+  const user = await userModels.findOne({email});
+  if (!user) {
+    return res.status(400).send({ msg: "user is not exist" });
+  }
+  const isMatch = bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(400).send({ msg: "The password is incorrect" });
+  }
+
+  const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: ".5m",
+  });
+  res.send({token,msg:"Welcome to our store"})
+  //console.log(token,"***Welcome to our store***")
+};

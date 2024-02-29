@@ -1,6 +1,6 @@
-
-import  { useState } from "react";
+import { useState } from "react";
 import { register } from "../../../Api/auth.api";
+
 import { useNavigate } from "react-router-dom";
 import style from "./register.module.scss";
 
@@ -13,16 +13,18 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Register = () => {
-  const [fullName, setFullName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handelRegister = () => {
-    const body = { fullName, email, password };
+    const body = { name, email, password };
+
     register(body)
       .then(() => {
-        navigate("/login");
+        // navigate("/login");
+        alert("rigster ok ");
       })
       .catch(() => {
         alert(" register invalid");
@@ -46,14 +48,14 @@ const Register = () => {
         </Box>
 
         <TextField
-          onChange={(e) => setFullName(e.target.value)}
-          value={fullName}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
           required
           fullWidth
-          id="fullName"
+          id="name"
           label="Full name"
-          name="fullName"
-          autoComplete="fullName"
+          name="name"
+          autoComplete="name"
         />
 
         <TextField
@@ -90,12 +92,12 @@ const Register = () => {
         >
           Sign In
         </Button>
-
       </div>
       <div
         className={style.background}
         style={{
-          backgroundImage: "url(https://source.unsplash.com/random?wallpapers/store)",
+          backgroundImage:
+            "url(https://source.unsplash.com/random?wallpapers/store)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           height: "100hv",
