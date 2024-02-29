@@ -12,3 +12,7 @@ return myApi.post("/auth/login",{email,password})
 
   }
  */
+export const login =(email,password)=>{
+  return myApi.post("/auth/login",{email,password})
+}
+
