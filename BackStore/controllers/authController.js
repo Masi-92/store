@@ -1,10 +1,28 @@
 import userModels from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import Jwt from "jsonwebtoken";
-export const getGoogleLink = (req, res) => {
-  const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&response_type=code&scope=profile email`;
-  res.redirect(url);
-};
+import { OAuth2Client } from "google-auth-library";
+
+const client = new OAuth2Client();
+
+export const getGooglAuth =async (req, res) => {
+  const { credential, client_id } = req.body;
+  try {
+  const ticket = await client.verifyIdToken({
+  idToken: credential,
+  audience: client_id,
+  });
+  const payload = ticket.getPayload();
+  const userId = payload["sub"];
+  res.status(200).json({ payload });
+  } catch (err) {
+  res.status(400).json({ err });
+  }
+  };
+
+
+
+
 
 export const register = async (req, res) => {
   const { name, email, password } = req.body;

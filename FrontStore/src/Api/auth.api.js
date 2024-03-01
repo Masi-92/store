@@ -7,3 +7,9 @@ export const register = (body) => {
 export const loginUser = (email, password) => {
   return myApi.post("/auth/login", { email, password });
 };
+
+
+export const getGooglAuth= (credential, client_id )=>{
+
+  return myApi.post("/auth/google",{credential, client_id} )
+}
