@@ -40,7 +40,7 @@ export const login = async (req, res) => {
   }
 
   const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: ".5m",
+    expiresIn: "1day",
   });
   res.send({token,msg:"Welcome to our store"})
   //console.log(token,"***Welcome to our store***")
