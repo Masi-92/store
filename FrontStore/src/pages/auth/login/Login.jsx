@@ -7,20 +7,24 @@ import { Avatar, Box, Button, TextField } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import myApi from "../../../Api/api";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 //import { Toast } from "react-toastify/dist/components";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const CLIENT_ID =
     "543659745528-post6eq93ov5va98if83hk02o83tnoko.apps.googleusercontent.com";
 
   const handelLogin = () => {
     loginUser(email, password)
       .then((res) => {
-        localStorage.setItem("token", res.send.token);
+        localStorage.setItem("token", res.data.token);
+        //we don't have  res.send wwe have to use data in front
         myApi.defaults.headers.token = res.data.token;
         toast.success("Welcome to our store");
+        navigate("/");
       })
       .catch(() => {
         toast.error(
@@ -94,7 +98,22 @@ const Login = () => {
       <GoogleOAuthProvider clientId={CLIENT_ID}>
         <GoogleLogin
           onSuccess={(credentialResponse) => {
-            getGooglAuth(credentialResponse.credential,credentialResponse.clientId)
+            getGooglAuth(
+              credentialResponse.credential,
+              credentialResponse.clientId
+            )
+              .then((res) => {
+                localStorage.setItem("token", res.data.token);
+         
+                myApi.defaults.headers.token = res.data.token;
+                toast.success("Welcome to our store");
+                navigate("/");
+              })
+              .catch(() => {
+                toast.error(
+                  " There seems to be an issue with your login attempt. Please try again"
+                );
+              });
             console.log(credentialResponse);
           }}
           onError={() => {

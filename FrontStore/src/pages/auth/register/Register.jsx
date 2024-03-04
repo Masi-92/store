@@ -16,15 +16,15 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
+const navigate = useNavigate();
 
   const handelRegister = () => {
     const body = { name, email, password };
 
     register(body)
       .then(() => {
-        // navigate("/login");
-        alert("rigster ok ");
+        navigate("/login");
+        alert(" you are registerit ");
       })
       .catch(() => {
         alert(" register invalid");
