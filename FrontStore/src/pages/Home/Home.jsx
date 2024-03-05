@@ -1,9 +1,12 @@
-
+import { MyCarousel } from "./carousel/myCarousel";
+import Category from "./catgorie/Category";
 
 const Home = () => {
   return (
-    <div >Home</div>
-  )
-}
-
-export default Home
+    <div>
+      <MyCarousel />
+      <Category />
+    </div>
+  );
+};
+export default Home;
