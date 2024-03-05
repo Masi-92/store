@@ -19,29 +19,29 @@ const Layout = () => {
     <div>
       <nav className="   gap-y-2 py-3   fixed top-0 w-full z-10">
         <ul className=" flex py-1 px-3 gap-y-2 justify-around   items-center">
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center bg-blue-gray-50 bg-opacity-30 rounded-md p-1">
             <li>
               <NavLink
                 to={items[2].to}
-                activeClassName="text-blue-500 border-b-2 border-gray-500"
-                className="items-center space-x-2"
+                //className="text-blue-500 border-b-2 border-gray-500"
+              
               >
-                <ShoppingCart size="30" color="#000" />
+                <ShoppingCart  />
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={items[1].to}
-                activeClassName="text-blue-500 border-b-2 border-gray-500"
-                className="items-center space-x-2"
+                activeClassName="text-blue-500  border-b-2 border-gray-500"
+                className="items-center space-x-2 "
               >
-                <User size="30" />
+                <User  />
               </NavLink>
             </li>
           </div>
           {/* ****************** */}
 
-          <div className=" flex gap-4">
+          <div className=" flex gap-4  bg-blue-gray-50 bg-opacity-30 rounded-md p-1">
             <li>
               <NavLink to={items[5]}>
                 <span>{items[5].name}</span>
@@ -67,11 +67,11 @@ const Layout = () => {
             </li>
           </div>
           {/* ******************************** */}
-          <div className=" flex gap-3">
+          <div className=" flex gap-3 bg-blue-gray-50  bg-opacity-30 rounded-md p-1 ">
             <li>
               <NavLink to={items[1]}>
-                <span>
-                  <Heart />
+                <span >
+                  <Heart  />
                 </span>
               </NavLink>
             </li>

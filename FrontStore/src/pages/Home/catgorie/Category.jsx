@@ -15,10 +15,10 @@ const Category = () => {
           <div key={index} className="relative">
             <img
               src={category.imageUrl}
-              className="w-full h-48 object-cover"
+              className=" h-48 w-full object-cover border-solid rounded-md  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               alt={category.name}
             />
-            <button className="absolute bottom-3 left-1/2 -translate-x-1/2 p-1 border-b-2 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-md">
+            <button className="absolute bottom-3 left-1/2 rounded-md	 -translate-x-1/2 px-1 transition ease-in-out delay-150 bg-blue-100 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
               {category.name}
             </button>
           </div>

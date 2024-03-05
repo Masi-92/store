@@ -1,10 +1,9 @@
 import { Carousel } from "@material-tailwind/react";
-import {  IconButton, } from "@mui/material";
- 
+import { IconButton } from "@mui/material";
 
 export const MyCarousel = () => {
-    return (
-      <Carousel
+  return (
+    <Carousel
       className="rounded-xl h-48 sm:h-[600px]"
       prevArrow={({ handlePrev }) => (
         <IconButton
@@ -15,12 +14,12 @@ export const MyCarousel = () => {
           className="!absolute top-2/4 left-4 -translate-y-2/4"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://source.unsplash.com/random?tea"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="h-6 w-6"
+            className="h-6 w-6  "
           >
             <path
               strokeLinecap="round"
@@ -36,15 +35,15 @@ export const MyCarousel = () => {
           color="white"
           size="lg"
           onClick={handleNext}
-          className="!absolute top-2/4 !right-4 -translate-y-2/4"
+          className="!absolute top-2/4 !right-4 -translate-y-2/4 "
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://source.unsplash.com/random?tea"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="h-6 w-6"
+            className="h-6 w-6 "
           >
             <path
               strokeLinecap="round"
@@ -56,20 +55,20 @@ export const MyCarousel = () => {
       )}
     >
       <img
-        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+        src="https://source.unsplash.com/random?coffee"
         alt="image 1"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-center  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
       <img
-        src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+        src="https://source.unsplash.com/random?tea"
         alt="image 2"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-center transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
       <img
-        src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+        src="https://source.unsplash.com/random?cocktail"
         alt="image 3"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-center transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
     </Carousel>
-      );
-    }
+  );
+};
