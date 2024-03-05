@@ -3,13 +3,14 @@ const Category = () => {
   const categories = [
     { name: 'coffee', imageUrl: 'https://source.unsplash.com/random?coffee' },
     { name: 'tea', imageUrl: 'https://source.unsplash.com/random?tea' },
-    { name: 'cocktail', imageUrl: 'https://source.unsplash.com/random?cocktail' }
+    { name: 'cocktail', imageUrl: 'https://source.unsplash.com/random?cocktail' },
+    { name: 'tea2', imageUrl: 'https://source.unsplash.com/random?tea' }
   ];
 
   return (
     <div>
       <div className="grid grid-cols-3 gap-2 py-2">
-        {/* Durchlaufe das Array der Kategorien und rendere jedes Element */}
+      
         {categories.map((category, index) => (
           <div key={index} className="relative">
             <img
