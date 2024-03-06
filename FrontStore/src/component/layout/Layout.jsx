@@ -1,5 +1,11 @@
 import HomeIcon from "@mui/icons-material/Home";
-import { Heart, ShoppingCart, User, SearchNormal1, TriangleLogo } from "iconsax-react";
+import {
+  Heart,
+  ShoppingCart,
+  User,
+  SearchNormal1,
+  TriangleLogo,
+} from "iconsax-react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -24,9 +30,8 @@ const Layout = () => {
               <NavLink
                 to={items[2].to}
                 //className="text-blue-500 border-b-2 border-gray-500"
-              
               >
-                <ShoppingCart  />
+                <ShoppingCart />
               </NavLink>
             </li>
             <li>
@@ -35,7 +40,7 @@ const Layout = () => {
                 activeClassName="text-blue-500  border-b-2 border-gray-500"
                 className="items-center space-x-2 "
               >
-                <User  />
+                <User />
               </NavLink>
             </li>
           </div>
@@ -53,7 +58,9 @@ const Layout = () => {
                 <span>{items[6].name}</span>
               </NavLink>
             </li>
-            <span><TriangleLogo /></span>
+            <span>
+              <TriangleLogo />
+            </span>
             <li>
               <NavLink to={items[7].to}>
                 <span>{items[7].name}</span>
@@ -70,15 +77,15 @@ const Layout = () => {
           <div className=" flex gap-3 bg-blue-gray-50  bg-opacity-30 rounded-md p-1 ">
             <li>
               <NavLink to={items[1]}>
-                <span >
-                  <Heart  />
+                <span>
+                  <Heart />
                 </span>
               </NavLink>
             </li>
             <li>
               <NavLink to={items[4]}>
                 <span>
-                  {items[4].name} <SearchNormal1  />
+                  {items[4].name} <SearchNormal1 />
                 </span>
               </NavLink>
             </li>
