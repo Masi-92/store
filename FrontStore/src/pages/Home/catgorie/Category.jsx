@@ -1,9 +1,12 @@
+import img1 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg"
+import img2 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg"
+import img3 from "../../../assets/images/photo_2024-03-07_15-37-24.jpg"
 const Category = () => {
 
   const categories = [
-    { name: 'coffee', imageUrl: 'https://source.unsplash.com/random?coffee' },
-    { name: 'tea', imageUrl: 'https://source.unsplash.com/random?tea' },
-    { name: 'cocktail', imageUrl: 'https://source.unsplash.com/random?cocktail' },
+    { name: 'coffee', imageUrl:img1},
+    { name: 'tea', imageUrl:img2 },
+    { name: 'cocktail', imageUrl:img3 },
 
   ];
 
@@ -15,12 +18,12 @@ const Category = () => {
           <div key={index} className="relative">
             <img
               src={category.imageUrl}
-              className=" h-48 w-full object-cover border-solid rounded-md  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              className="  w-full object-cover  rounded-xl  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none px-5 mt-10"
               alt={category.name}
             />
-            <p className="absolute bottom-3 border-t bg-opacity-30 left-1/2 text-center rounded-md	border-b min-w-20 -translate-x-1/2 px-1 transition ease-in-out delay-150 bg-blue-100 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-400 duration-300">
+          {/*   <p className="absolute bottom-3 border-t bg-opacity-30 left-1/2 text-center rounded-md	border-b min-w-20 -translate-x-1/2 px-1 transition ease-in-out delay-150 bg-blue-100 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-400 duration-300">
               {category.name}
-            </p>
+            </p> */}
           </div>
         ))}
       </div>

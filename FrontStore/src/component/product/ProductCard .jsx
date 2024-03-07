@@ -7,9 +7,9 @@ import {
 
 const ProductCard = ({ productName, image, price, disCount }) => {
   return (
-    <Card className="w-96">
-      <CardHeader floated={false} className="h-80 relative">
-        <img src={image} alt="product-picture" />
+    <Card className=" md:w-96  sm:w-80 w-40 border-2 ">
+      <CardHeader floated={false} className=" md:h-80 sm:h-60  h-20 relative">
+        <img src={image} alt="product-picture" className="h-full object-cover w-full"/>
         <span className="absolute top-1 right-1 border-red bg-teal-800 rounded-full h-12 w-12 flex justify-center items-center text-white p-.5">
           %{disCount}€
         </span>

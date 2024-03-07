@@ -1,5 +1,10 @@
 import { Carousel } from "@material-tailwind/react";
 import { IconButton } from "@mui/material";
+import img1 from "../../../assets/images/photo_2024-03-07_15-36-20.jpg"
+import img2 from "../../../assets/images/img2.jpg"
+import img3 from "../../../assets/images/img3.jpg"
+//import img4 from "../../../assets/images/photo_2024-03-07_15-37-31.jpg"
+
 
 export const MyCarousel = () => {
   return (
@@ -55,17 +60,17 @@ export const MyCarousel = () => {
       )}
     >
       <img
-        src="https://source.unsplash.com/random?coffee"
+        src={img1}
         alt="image 1"
         className="h-full w-full object-cover object-center  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
       <img
-        src="https://source.unsplash.com/random?tea"
+        src={img2}
         alt="image 2"
         className="h-full w-full object-cover object-center transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
       <img
-        src="https://source.unsplash.com/random?cocktail"
+          src={img3}
         alt="image 3"
         className="h-full w-full object-cover object-center transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
       />
