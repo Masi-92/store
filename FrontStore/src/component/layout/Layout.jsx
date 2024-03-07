@@ -37,7 +37,7 @@ const Layout = () => {
             <li>
               <NavLink
                 to={items[1].to}
-                activeClassName="text-blue-500  border-b-2 border-gray-500"
+            
                 className="items-center space-x-2 "
               >
                 <User />
