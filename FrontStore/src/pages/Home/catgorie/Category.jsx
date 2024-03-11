@@ -1,12 +1,24 @@
-import img1 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg";
+import { useEffect, useState } from "react";
+/* import img1 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg";
 import img2 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg";
-import img3 from "../../../assets/images/photo_2024-03-07_15-37-24.jpg";
+import img3 from "../../../assets/images/photo_2024-03-07_15-37-24.jpg"; */
+import { getCategory } from "../../../Api/category.api";
 const Category = () => {
-  const categories = [
-    { name: "coffee", imageUrl: img1 },
-    { name: "tea", imageUrl: img2 },
-    { name: "cocktail", imageUrl: img3 },
-  ];
+  const [categories, setCategories] = useState([]);
+
+  const getAllCategory = () => {
+    getCategory()
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
 
   return (
     <div>
@@ -14,7 +26,7 @@ const Category = () => {
         {categories.map((category, index) => (
           <div key={index} className="relative">
             <img
-              src={category.imageUrl}
+              src={category.image}
               className="  w-full object-cover  rounded-xl  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none px-5 mt-10"
               alt={category.name}
             />

@@ -5,7 +5,7 @@ import { createCategory, getCategory } from "../controllers/category.controller.
 const route = Router()
 
 
-route.get("/category",getCategory)
-route.post("/CreateCategory", createCategory)
+route.get("/",getCategory)
+route.post("/", createCategory)
 
 export default route;
