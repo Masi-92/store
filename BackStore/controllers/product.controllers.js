@@ -6,18 +6,19 @@ export const getProduct = async (req, res) => {
   res.send(products);
   console.log(products);
 };
+ export const createProduct = async (req, res) => {
+  const body = req.body;
+/*   const newProduct = await productModel.create({...body});
+ */  const newProduct = await productModel.create(body);
+
+  res.send(newProduct);
+}; 
 
 /* export const createProduct = async (req, res) => {
-  const body = req.body;
-  const newProduct = await productModel.create(...body);
-  res.send(newProduct);
-}; */
-
-export const createProduct = async (req, res) => {
     const {productName,price,image,disCount} = req.body;
     const newProduct = await productModel.create({productName,price,image,disCount});
     console.log(newProduct)
     res.send(newProduct);
 
-  };
+  }; */
   
