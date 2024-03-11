@@ -7,8 +7,6 @@ const productSchema = new Schema({
    disCount:String,
    price:String,
    satisfaction:String,
-   
-
 })
 
 export default model("product",productSchema)
