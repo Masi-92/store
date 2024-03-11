@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-/* import img1 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg";
-import img2 from "../../../assets/images/photo_2024-03-07_15-37-17.jpg";
-import img3 from "../../../assets/images/photo_2024-03-07_15-37-24.jpg"; */
+
 import { getCategory } from "../../../Api/category.api";
 const Category = () => {
   const [categories, setCategories] = useState([]);
