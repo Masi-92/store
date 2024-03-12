@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <div>
       {" "}
-      <nav className="felx justify-between px-10" >
+      <nav className="felx justify-between" >
         <ul className={`flex justify-around p-5 fixed top-0 w-full z-10 px-64 text-cyan-900 ${
         isScrolled ? "bg-white shadow-lg transition-all duration-500" : ""
       }`}>
