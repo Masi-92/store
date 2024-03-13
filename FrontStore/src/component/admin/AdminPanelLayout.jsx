@@ -9,10 +9,11 @@ import {
   ListItemPrefix,
   ListItemSuffix,
   Chip,
-  Navbar,
+
 } from "@material-tailwind/react";
 import { Link, Outlet } from "react-router-dom";
-import { HambergerMenu } from "iconsax-react";
+
+import { AdminHeader } from "./header/AdminHeared";
 
 const AdminPanelLayout = () => {
   const [open, setOpen] = React.useState(false);
@@ -22,9 +23,7 @@ const AdminPanelLayout = () => {
     <div>
       <React.Fragment>
        
-          <div className="w-full mx-auto flex items-center justify-between text-blue-gray-900 bg-blue-gray-200 h-10">
-            <HambergerMenu onClick={openDrawer} />
-          </div>
+        <AdminHeader openDrawer={openDrawer}/>
     
         <Drawer open={open} onClose={closeDrawer}>
           <div className="mb-2 flex items-center justify-between p-4">

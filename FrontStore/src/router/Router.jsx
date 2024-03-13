@@ -7,6 +7,7 @@ import AdminPanelLayout from "../component/admin/AdminPanelLayout";
 import CategoryList from "../component/admin/CategoryList";
 import CreateCategoryAdmin from "../component/admin/CreateCategoryAdmin";
 
+
 const Router = () => {
   return (
     <Routes>
@@ -16,7 +17,7 @@ const Router = () => {
       <Route path="/admin" element={<AdminPanelLayout />}>
         <Route path="CategoryList" element={<CategoryList />} />
         <Route path="createCategory" element={<CreateCategoryAdmin/>}/>
-
+  {/*       <Route  path= "" element = {<A/>} /> */}
       </Route>
       <Route path="/*" element={<Layout />}>
         <Route path="" element={<Home />} />

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import fileRoute from "./file.route.js"
 
 import productRouter from "../routers/product.route.js"
 import categoryRouter from "../routers/category.route.js"
