@@ -1,10 +1,51 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import InputImage from "../../inputImage/inputImage";
-import { Button } from "@material-tailwind/react";
-import { createProductApi } from "../../../Api/product";
+import { Button, Card, Input, Typography } from "@material-tailwind/react";
+import { createProductApi, getAllProduct } from "../../../Api/product";
 import { getCategory } from "../../../Api/category.api";
+import { toast } from "react-toastify";
+import DataTable from "../../Table/datatable/datatable";
+import { IconButton } from "@mui/material";
+import { Edit, Trash } from "iconsax-react";
 const CreateProduct = () => {
+
+//____________________________________________________________
+const columns = [
+  {
+    header: "image",
+    accessorFn: (row) => {
+      return (
+        <div >
+          <img src={row.image} className="w-20" alt="" />
+        </div>
+      );
+    },
+  },
+  { header: "Name", accessorKey: "name" },
+
+
+
+  {
+    header: "Actions",
+    enableSorting: false,
+    accessorFn: (row) => (
+      
+      <div className="flex gap-2">
+          <IconButton >
+         <Edit/>
+          </IconButton>
+          <IconButton >
+         <Trash/>
+          </IconButton>
+          </div>
+     
+    ),
+    size: 150,
+  }, 
+];
+
+//__________________________________________________________
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
     image: "",
@@ -13,11 +54,23 @@ const CreateProduct = () => {
     price: "",
     category: "",
   });
+
+  const [product,setProduct]=useState([])
+  useEffect(()=>{
+  getAllProduct()
+  .then((res)=>{
+  setProduct(res.data)
+  
+  })
+  .catch(()=>{
+   toast("product not found")
+  })
+  },[])
   useEffect(() => {
     getCategory().then((res) => {
       setCategories(res.data);
     });
-  },[]);
+  }, []);
   const navigate = useNavigate();
   const handleChangeInput = (e) => {
     const name = e.target.name;
@@ -32,38 +85,55 @@ const CreateProduct = () => {
 
   const createNewProduct = () => {
     createProductApi(form).then(() => {
-     
       navigate(-1);
     });
   };
   return (
     <div>
-      <div className="flex flex-col">
-        <h1>Add product</h1>
 
+      <DataTable columns={columns} data={product}/>
+      <div className="flex flex-col ml-9 p-3 ">
+       
+        <Card color="transparent" shadow={false}>
+        <Typography variant="h4" color="blue-gray">
+        Add new product
+        </Typography>
+        <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Name Category
+            </Typography>
+            <Input
+              size="lg"
+              placeholder=" Name Category"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              onChange={handleChangeInput}
+              value={form.name}
+            />
         <InputImage value={form.image} setValue={handleChangeImage} />
 
-        <input
-          value={form.name}
-          onChange={handleChangeInput}
-          name="name"
-          type="text"
-          placeholder="name"
-        />
-        <input
-          value={form.disCount}
-          onChange={handleChangeInput}
-          name="disCount"
-          type="number"
-          placeholder="disCount"
-        />
-        <input
-          value={form.price}
-          onChange={handleChangeInput}
-          name="price"
-          type="number"
-          placeholder="price"
-        />
+        <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Price
+            </Typography>
+            <Input
+            type="number"
+              size="lg"
+              placeholder="price "
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              onChange={handleChangeInput}
+              value={form.price}
+            />
+     
+       
+       <Typography variant="h6" color="blue-gray" className="-mb-3">
+       disCount
+            </Typography>
+            <Input
+            type="number"
+              size="lg"
+              placeholder="disCount "
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              onChange={handleChangeInput}
+              value={form.disCount}
+            />
 
         <select
           value={form.category}
@@ -72,12 +142,20 @@ const CreateProduct = () => {
           type="text"
         >
           {categories.map((item, index) => {
-            return <option   key={index}  value={item._id}>{item.name}</option>;
+            return (
+              <option key={index} value={item._id} >
+                {item.name}  <Typography variant="h4" color="blue-gray">
+           Category
+           
+        </Typography>
+              </option>
+            );
           })}
-          category
+         
         </select>
 
-        <Button onClick={createNewProduct}>Create</Button>
+        <Button className="mt-6"onClick={createNewProduct}>Create</Button>
+        </Card>
       </div>
     </div>
   );

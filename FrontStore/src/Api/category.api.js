@@ -6,7 +6,7 @@ export const getCategory=()=>{
     return myApi.get("/category")
 }
 
-export  const createCategory=()=>{
+export  const createCategory=(body)=>{
 
-    return myApi.post("/category")
+    return myApi.post("/category",body)
 }
