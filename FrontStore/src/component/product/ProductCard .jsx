@@ -26,7 +26,7 @@ setProduct(res.data)
 .catch(()=>{
  toast("product not found")
 })
-})
+},[])
   return (
     <Card className=" md:w-96  sm:w-80 w-40 border-2 ">
       <CardHeader floated={false} className=" md:h-80 sm:h-60  h-20 relative">
