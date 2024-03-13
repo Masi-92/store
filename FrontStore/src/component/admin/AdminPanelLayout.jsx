@@ -94,6 +94,7 @@ const AdminPanelLayout = () => {
                 </ListItemSuffix>
               </ListItem>
             </Link>
+            <Link to="/admin/createProduct" onClick={closeDrawer}>
             <ListItem>
               <ListItemPrefix>
                 <svg
@@ -109,8 +110,9 @@ const AdminPanelLayout = () => {
                   />
                 </svg>
               </ListItemPrefix>
-              Sales
+            Create Product
             </ListItem>
+            </Link>
             <ListItem>
               <ListItemPrefix>
                 <svg

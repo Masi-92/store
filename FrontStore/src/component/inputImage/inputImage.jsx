@@ -3,9 +3,7 @@ import { useRef, useState } from "react";
 import { CircularProgress, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 import style from "./inputImage.module.scss";
-import { upload } from "../../api/uploadApi";
-
-
+import {upload} from "../../Api/uploadApi"
 const InputImage = ({ value, setValue }) => {
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();

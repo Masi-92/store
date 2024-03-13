@@ -1,7 +1,7 @@
-import api from "./api";
+import myApi from "./api";
 
 
  export const upload=(formData)=> {
-    return api.post("/file/upload", formData);
+    return myApi.post("/file/upload", formData);
   }
 
