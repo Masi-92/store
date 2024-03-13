@@ -7,6 +7,8 @@ const router = Router()
 router.use("/auth", router);
 router.use("/product",productRouter)
 router.use("/category",categoryRouter )
+router.use("/file" , fileRoute);
+
 
 
 export default router
