@@ -111,7 +111,11 @@ const Login = () => {
 
                 myApi.defaults.headers.token = res.data.token;
                 toast.success("Welcome to our store");
-                navigate("/");
+                if (res.data.role === "admin") {
+                  navigate("/admin");
+                } else {
+                  navigate("/");
+                }
               })
               .catch(() => {
                 toast.error(
