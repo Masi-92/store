@@ -24,7 +24,7 @@ export const getGooglAuth = async (req, res) => {
       });
   
     }
-    const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = Jwt.sign({ id: user._id,role:user.role }, process.env.JWT_SECRET, {
       expiresIn: "1day",
     });
     res.send({ token, msg: "Welcome to our store" });
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
     return res.status(400).send({ msg: "The password is incorrect" });
   }
 
-  const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+  const token = Jwt.sign({ id: user._id,role:user.role }, process.env.JWT_SECRET, {
     expiresIn: "1day",
   });
   res.send({ token, msg: "Welcome to our store" });

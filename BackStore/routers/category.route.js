@@ -1,11 +1,17 @@
 import { Router } from "express";
-import { createCategory, getCategory } from "../controllers/category.controller.js";
+import {
+  EditCategory,
+  createCategory,
+  deleteCategory,
+  getCategory,
+} from "../controllers/category.controller.js";
+import { auth } from "../middleware/authMiddlware.js";
+import { isAdmin } from "../middleware/isAdmin.js";
 
+const route = Router();
 
-const route = Router()
-
-
-route.get("/",getCategory)
-route.post("/", createCategory)
-
+route.get("/", getCategory);
+route.post("/", auth, isAdmin, createCategory);
+route.put("/editCategory/:id", auth, isAdmin, EditCategory);
+route.delete("/delCategory/:id", auth, isAdmin, deleteCategory);
 export default route;
