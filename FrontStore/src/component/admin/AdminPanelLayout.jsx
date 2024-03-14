@@ -64,6 +64,7 @@ const AdminPanelLayout = () => {
                     />
                   </svg>
                 </ListItemPrefix>
+      
                 CategoryList
               </ListItem>
             </Link>
@@ -113,6 +114,7 @@ const AdminPanelLayout = () => {
             Create Product
             </ListItem>
             </Link>
+            <Link to="/admin/ProductList" onClick={closeDrawer} >
             <ListItem>
               <ListItemPrefix>
                 <svg
@@ -128,8 +130,9 @@ const AdminPanelLayout = () => {
                   />
                 </svg>
               </ListItemPrefix>
-              Profile
+              Product list
             </ListItem>
+            </Link>
             <ListItem>
               <ListItemPrefix>
                 <svg

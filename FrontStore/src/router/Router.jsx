@@ -7,6 +7,7 @@ import AdminPanelLayout from "../component/admin/AdminPanelLayout";
 import CategoryList from "../component/admin/CategoryList";
 import CreateCategoryAdmin from "../component/admin/CreateCategoryAdmin";
 import CreateProduct from "../component/admin/prodact/CreateProduct";
+import ProductList from "../component/admin/ProductList";
 
 
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="CategoryList" element={<CategoryList />} />
         <Route path="createCategory" element={<CreateCategoryAdmin />} />
         <Route path="createProduct" element={<CreateProduct />} />
+        <Route path="ProductList" element={<ProductList/>} />
       </Route>
       <Route path="/*" element={<Layout />}>
         <Route path="" element={<Home />} />

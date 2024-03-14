@@ -6,7 +6,7 @@ import InputImage from "../inputImage/inputImage";
 
 const CreateCategoryAdmin = () => {
   const [create, setCreate] = useState({
-    name: "",
+name: "",
     image: "",
   });
   const navigate = useNavigate();
@@ -44,6 +44,8 @@ const CreateCategoryAdmin = () => {
               placeholder=" Name Category"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               onChange={handleChangeInput}
+              value={create.name}
+              name="name"
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Image

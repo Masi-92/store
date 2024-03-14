@@ -94,6 +94,8 @@ const CreateProduct = () => {
             placeholder=" Product Name"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             onChange={handleChangeInput}
+            name="name"
+            value={form.name}
           
           />
           <InputImage value={form.image} setValue={handleChangeImage} />
@@ -107,18 +109,21 @@ const CreateProduct = () => {
             placeholder="price "
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             onChange={handleChangeInput}
-            
+            name="price"
+            value={form.price}
           />
 
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            disCount
+            discount
           </Typography>
           <Input
             type="number"
             size="lg"
-            placeholder="disCount "
+            placeholder="discount "
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             onChange={handleChangeInput}
+            name="discount"
+            value={form.discount}
             
           />
 

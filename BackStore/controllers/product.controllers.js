@@ -15,8 +15,8 @@ export const createProduct = async (req, res) => {
 };
 
 /* export const createProduct = async (req, res) => {
-    const {productName,price,image,disCount} = req.body;
-    const newProduct = await productModel.create({productName,price,image,disCount});
+    const {name,price,image,discount} = req.body;
+    const newProduct = await productModel.create({name,price,image,discount});
     console.log(newProduct)
     res.send(newProduct);
 
