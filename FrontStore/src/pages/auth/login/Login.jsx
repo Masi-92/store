@@ -24,7 +24,11 @@ const Login = () => {
         //we don't have  res.send wwe have to use data in front
         myApi.defaults.headers.token = res.data.token;
         toast.success("Welcome to our store");
-        navigate("/");
+        if (res.data.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       })
       .catch(() => {
         toast.error(
@@ -62,7 +66,7 @@ const Login = () => {
           autoComplete="email"
           autoFocus
         />
-        <TextField 
+        <TextField
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           margin="normal"
@@ -74,7 +78,7 @@ const Login = () => {
           id="password"
           autoComplete="current-password"
         />
-        <Button 
+        <Button
           type="submit"
           fullWidth
           variant="contained"
@@ -104,7 +108,7 @@ const Login = () => {
             )
               .then((res) => {
                 localStorage.setItem("token", res.data.token);
-         
+
                 myApi.defaults.headers.token = res.data.token;
                 toast.success("Welcome to our store");
                 navigate("/");

@@ -22,20 +22,19 @@ export const getGooglAuth = async (req, res) => {
         name: payload.name,
         image: payload.picture,
       });
-  
     }
-    const token = Jwt.sign({ id: user._id,role:user.role }, process.env.JWT_SECRET, {
-      expiresIn: "1day",
-    });
-    res.send({ token, msg: "Welcome to our store" });
- 
+    const token = Jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1day",
+      }
+    );
+    res.send({ token, role: user.role, msg: "Welcome to our store" });
   } catch (err) {
     res.status(400).json({ err });
   }
-
 };
-
-
 
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -70,9 +69,13 @@ export const login = async (req, res) => {
     return res.status(400).send({ msg: "The password is incorrect" });
   }
 
-  const token = Jwt.sign({ id: user._id,role:user.role }, process.env.JWT_SECRET, {
-    expiresIn: "1day",
-  });
-  res.send({ token, msg: "Welcome to our store" });
+  const token = Jwt.sign(
+    { id: user._id, role: user.role },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1day",
+    }
+  );
+  res.send({ token, role: user.role, msg: "Welcome to our store" });
   //console.log(token,"***Welcome to our store***")
 };
