@@ -1,42 +1,13 @@
 import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputImage from "../../inputImage/inputImage";
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
 import { createProductApi, getAllProduct } from "../../../Api/product";
 import { getCategory } from "../../../Api/category.api";
 import { toast } from "react-toastify";
-import DataTable from "../../Table/datatable/datatable";
-import { IconButton } from "@mui/material";
-import { Edit, Trash } from "iconsax-react";
+
 const CreateProduct = () => {
-  //____________________________________________________________
-  const columns = [
-    {
-      header: "image",
-      accessorFn: (row) => {
-        return (
-          <div>
-            <img src={row.image} className="w-20" alt="" />
-          </div>
-        );
-      },
-    },
-    { header: "Name", accessorKey: "name" },
 
-    {
-      header: "Actions",
-      enableSorting: false,
-      accessorFn: (row) => (
-        <div className="flex gap-2">
-          <IconButton></IconButton>
-          <IconButton></IconButton>
-        </div>
-      ),
-      size: 150,
-    },
-  ];
-
-  //__________________________________________________________
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
     image: "",
@@ -80,14 +51,13 @@ const CreateProduct = () => {
   };
   return (
     <div>
-      <DataTable columns={columns} data={product} />
       <div className="flex flex-col ml-9 p-3 ">
         <Card color="transparent" shadow={false}>
           <Typography variant="h4" color="blue-gray">
             Add new product
           </Typography>
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-           Product Name
+            Product Name
           </Typography>
           <Input
             size="lg"
@@ -96,7 +66,6 @@ const CreateProduct = () => {
             onChange={handleChangeInput}
             name="name"
             value={form.name}
-          
           />
           <InputImage value={form.image} setValue={handleChangeImage} />
 
@@ -124,7 +93,6 @@ const CreateProduct = () => {
             onChange={handleChangeInput}
             name="discount"
             value={form.discount}
-            
           />
 
           <select
@@ -137,7 +105,6 @@ const CreateProduct = () => {
               return (
                 <option key={index} value={item._id}>
                   {item.name}{" "}
-                
                 </option>
               );
             })}
