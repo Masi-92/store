@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputImage from "../../inputImage/inputImage";
-import { Button, Card, Input, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Card,
+  Input,
+  Option,
+  Select,
+  Typography,
+} from "@material-tailwind/react";
 import { createProductApi, getAllProduct } from "../../../Api/product";
 import { getCategory } from "../../../Api/category.api";
 import { toast } from "react-toastify";
 
 const CreateProduct = () => {
-
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
     image: "",
@@ -32,6 +38,7 @@ const CreateProduct = () => {
       setCategories(res.data);
     });
   }, []);
+
   const navigate = useNavigate();
   const handleChangeInput = (e) => {
     const name = e.target.name;
@@ -44,6 +51,12 @@ const CreateProduct = () => {
     setForm({ ...form });
   };
 
+  // telwind handelCanghe
+/*   const handleChangeCategory = (value) => {
+    form.category = value;
+    setForm({ ...form });
+  }; */
+  // console.log(form)
   const createNewProduct = () => {
     createProductApi(form).then(() => {
       navigate(-1);
@@ -98,13 +111,14 @@ const CreateProduct = () => {
           <select
             value={form.category}
             onChange={handleChangeInput}
-            name="category"
-            type="text"
+            label="category"
+            id=""
           >
+            <option value=""> select Category</option>
             {categories.map((item, index) => {
               return (
                 <option key={index} value={item._id}>
-                  {item.name}{" "}
+                  {item.name}
                 </option>
               );
             })}

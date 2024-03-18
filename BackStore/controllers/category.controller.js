@@ -35,3 +35,12 @@ export const deleteCategory = async (req, res) => {
     return res.status(400).send({ message: "category not found" });
   res.send(delCategory);
 };
+
+
+export const getCategoryById = async (req,res) =>{
+  const id = req.params.id
+  const CategoryId = await categoryModel.findById(id)
+  if (!CategoryId) return res.send(400).send({ msg: "product not found" })
+  res.send(CategoryId);
+
+}

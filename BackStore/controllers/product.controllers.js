@@ -4,7 +4,7 @@ export const getProduct = async (req, res) => {
   const products = await productModel.find();
   if (!products) return res.send(400).send({ msg: "product not found" });
   res.send(products);
-  console.log(products);
+ // console.log(products);
 };
 export const createProduct = async (req, res) => {
   const body = req.body;
@@ -41,3 +41,12 @@ export const deleteProduct = async (req, res) => {
   },{new:true});
   res.send(delProduct);
 };
+
+
+export const getProductById = async (req,res) =>{
+  const id = req.params.id
+  const productId = await productModel.findById(id)
+  if (!productId) return res.send(400).send({ msg: "product not found" })
+  res.send(productId);
+
+}

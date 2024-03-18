@@ -1,12 +1,20 @@
-import myApi from "./api"
+import myApi from "./api";
 
+export const getCategory = () => {
+  return myApi.get("/category");
+};
 
-export const getCategory=()=>{
+export const createCategory = (body) => {
+  return myApi.post("/category", body);
+};
+export const editCategory = (id, body) => {
+  return myApi.put(`/category/editCategory/${id}`, body);
+};
 
-    return myApi.get("/category")
-}
+export const deleteCategory = (id) => {
+  return myApi.delete(`/category/delCategory/${id}`);
+};
 
-export  const createCategory=(body)=>{
-
-    return myApi.post("/category",body)
-}
+export const getCategoryById = (id) => {
+  return myApi.get(`/category/${id}`);
+};
