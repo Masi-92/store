@@ -1,7 +1,7 @@
 import productModel from "../models/productModel/product.model.js";
 
 export const getProduct = async (req, res) => {
-  const products = await productModel.find();
+  const products = await productModel.find().populate("category");
   if (!products) return res.send(400).send({ msg: "product not found" });
   res.send(products);
  // console.log(products);
@@ -49,4 +49,11 @@ export const getProductById = async (req,res) =>{
   if (!productId) return res.send(400).send({ msg: "product not found" })
   res.send(productId);
 
+}
+
+export const  getProductByCategoryId = async (req,res)=>{
+
+  const {id}= req.params
+  const product = await productModel.find({category:id})
+res.send(product)
 }

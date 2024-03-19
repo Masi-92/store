@@ -4,13 +4,14 @@ import {
   createProduct,
   deleteProduct,
   getProduct,
+  getProductByCategoryId,
   getProductById,
 } from "../controllers/product.controllers.js";
 import { auth } from "../middleware/authMiddlware.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 
 const router = Router();
-
+router.get("/productList/:id", getProductByCategoryId)
 router.get("/:id",getProductById)
 router.get("/", getProduct);
 router.post("/createProduct", auth, isAdmin, createProduct);

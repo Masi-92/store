@@ -8,22 +8,20 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import ModalProduct from "./prodact/ModalProduct/ModalProduct";
 
-
 const ProductList = () => {
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
   const [selectedId, setSelectedId] = useState();
-  
+
   useEffect(() => {
-  getData()
-   
+    getData();
   }, []);
 
   const getData = () => {
     getAllProduct()
-    .then((res) => {
+      .then((res) => {
         setProduct(res.data);
       })
       .catch(() => {
@@ -59,20 +57,28 @@ const ProductList = () => {
     },
     { header: "Price", accessorKey: "price" },
     { header: "discount", accessorKey: "discount" },
-    { header: "Category", accessorKey: "category" },
+
+    {
+      header: "Category",
+      accessorFn: (row) => {
+        return (
+          <div>
+            <span>{row.category.name} </span>
+          </div>
+        );
+      },
+    },
     {
       header: "Actions",
       enableSorting: false,
       accessorFn: (row) => (
         <div className="flex gap-2">
           <IconButton
-          
-          onClick={() => {
-            handleOpen();
-            setSelectedId(row._id);
-          }}
-        >
-          
+            onClick={() => {
+              handleOpen();
+              setSelectedId(row._id);
+            }}
+          >
             <Edit />
           </IconButton>
           <IconButton onClick={() => handelDelete(row._id)}>
@@ -97,12 +103,10 @@ const ProductList = () => {
       </div>
       <DataTable columns={columns} data={product} />
       <ModalProduct
-      
-      handleOpen={handleOpen}
-      open={open}
-      id={selectedId}
-      getData={getData}
-      
+        handleOpen={handleOpen}
+        open={open}
+        id={selectedId}
+        getData={getData}
       />
     </div>
   );

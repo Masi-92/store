@@ -1,9 +1,11 @@
 import  { useEffect, useState } from "react";
 import { getCategory } from "../../../Api/category.api";
+import { useNavigate } from "react-router-dom";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+const navigate = useNavigate()
 
   const getAllCategory = () => {
     getCategory()
@@ -21,6 +23,12 @@ const Category = () => {
     getAllCategory();
   }, []);
 
+
+  const handelClick=(id)=>{
+navigate(`/productList/${id}`)
+  }
+
+
   return (
     <div>
       {loading ? (
@@ -33,7 +41,9 @@ const Category = () => {
                 src={category.image}
                 className="w-full object-cover rounded-xl transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none px-5 mt-10"
                 alt={category.name}
+                onClick={()=>handelClick(category._id)}
               />
+              <span>{category.name}</span>
             </div>
           ))}
         </div>

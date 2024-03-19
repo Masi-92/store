@@ -16,6 +16,10 @@ export const deleteProduct = (id) => {
   return myApi.delete(`/product/delProduct/${id}`);
 };
 
-export const getProductById =(id)=>{
-  return myApi.get(`/product/${id}`)
-}
+export const getProductById = (id) => {
+  return myApi.get(`/product/${id}`);
+};
+
+export const getProductByCategoryId = (id) => {
+  return myApi.get(`/product/productList/${id}`);
+};
