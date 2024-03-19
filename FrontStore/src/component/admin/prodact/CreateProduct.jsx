@@ -114,7 +114,7 @@ const CreateProduct = () => {
             label="category"
             id=""
           >
-            <option value=""> select Category</option>
+            <option value="" className="border bg-blue-gray-400"> select Category</option>
             {categories.map((item, index) => {
               return (
                 <option key={index} value={item._id}>

@@ -122,7 +122,7 @@ setForm(res.data)
             name="category"
             type="text"
           >
-            <option value="">Select Category</option>
+       
             {categories.map((item, index) => {
               return (
                 <option key={index} value={item._id}>

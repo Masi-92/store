@@ -6,16 +6,43 @@ import { toast } from "react-toastify";
 import { Avatar, Box, Button, TextField } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import myApi from "../../../Api/api";
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import {
+  GoogleLogin,
+  GoogleOAuthProvider,
+  useGoogleLogin,
+} from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import { Google } from "iconsax-react";
+import { CLIENT_ID } from "../../../main";
+
 //import { Toast } from "react-toastify/dist/components";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const CLIENT_ID =
-    "543659745528-post6eq93ov5va98if83hk02o83tnoko.apps.googleusercontent.com";
+  const googleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      getGooglAuth(tokenResponse.access_token, CLIENT_ID)
+        .then((res) => {
+          localStorage.setItem("token", res.data.token);
+
+          myApi.defaults.headers.token = res.data.token;
+          toast.success("Welcome to our store");
+          if (res.data.role === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
+        })
+        .catch(() => {
+          toast.error(
+            " There seems to be an issue with your login attempt. Please try again"
+          );
+        });
+      console.log(tokenResponse);
+    },
+  });
 
   const handelLogin = () => {
     loginUser(email, password)
@@ -99,36 +126,7 @@ const Login = () => {
         }}
       ></div>
 
-      <GoogleOAuthProvider clientId={CLIENT_ID}>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            getGooglAuth(
-              credentialResponse.credential,
-              credentialResponse.clientId
-            )
-              .then((res) => {
-                localStorage.setItem("token", res.data.token);
-
-                myApi.defaults.headers.token = res.data.token;
-                toast.success("Welcome to our store");
-                if (res.data.role === "admin") {
-                  navigate("/admin");
-                } else {
-                  navigate("/");
-                }
-              })
-              .catch(() => {
-                toast.error(
-                  " There seems to be an issue with your login attempt. Please try again"
-                );
-              });
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            // console.log(Login, Failed);
-          }}
-        />
-      </GoogleOAuthProvider>
+      <Google onClick={googleLogin} />
     </div>
   );
 };
