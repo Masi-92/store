@@ -57,3 +57,10 @@ export const  getProductByCategoryId = async (req,res)=>{
   const product = await productModel.find({category:id})
 res.send(product)
 }
+
+export const getDetails = async(req,res)=>{
+const {id} = req.params;
+const details = await productModel.findById(id)
+res.send(details)
+
+}

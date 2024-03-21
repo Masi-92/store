@@ -23,3 +23,7 @@ export const getProductById = (id) => {
 export const getProductByCategoryId = (id) => {
   return myApi.get(`/product/productList/${id}`);
 };
+
+export const getDetails = (id) => {
+  return myApi.get(`/product/details/${id}`);
+};

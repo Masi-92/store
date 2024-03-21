@@ -9,6 +9,7 @@ import CreateCategoryAdmin from "../component/admin/CreateCategoryAdmin";
 import CreateProduct from "../component/admin/prodact/CreateProduct";
 import ProductList from "../component/admin/ProductList";
 import ProductListCategory from "../pages/productList/ProductListCategory";
+import Details from "../pages/details/Details";
 
 const Router = () => {
   return (
@@ -26,7 +27,9 @@ const Router = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="" element={<Home />} />
         <Route path="productList/:id" element={<ProductListCategory />} />
+        <Route path="details/:id" element={<Details/>}/>
       </Route>
+      
     </Routes>
   );
 };

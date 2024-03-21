@@ -6,6 +6,7 @@ const productSchema = new Schema({
   discount: String,
   price: String,
   satisfaction: String,
+  description:String,
   category: {
     ref: "category",
     type: Schema.Types.ObjectId,

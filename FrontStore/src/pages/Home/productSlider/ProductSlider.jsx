@@ -35,6 +35,7 @@ const ProductSlider = ({title ,list}) => {
             image={product.image}
             price={product.price}
             discount={product.discount}
+            id={product._id}
           />
         </SwiperSlide>
       ))}

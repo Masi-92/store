@@ -32,6 +32,7 @@ const ProductListCategory = () => {
             image={item.image}
             name={item.name}
             price={item.price}
+            id={item._id}
             key={index}
           />)
       

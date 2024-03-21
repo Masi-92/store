@@ -3,6 +3,7 @@ import {
   EditProduct,
   createProduct,
   deleteProduct,
+  getDetails,
   getProduct,
   getProductByCategoryId,
   getProductById,
@@ -13,6 +14,7 @@ import { isAdmin } from "../middleware/isAdmin.js";
 const router = Router();
 router.get("/productList/:id", getProductByCategoryId)
 router.get("/:id",getProductById)
+router.get("/details/:id", getDetails)
 router.get("/", getProduct);
 router.post("/createProduct", auth, isAdmin, createProduct);
 router.put("/editProduct/:id", auth, isAdmin, EditProduct);
