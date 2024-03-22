@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
   export const CLIENT_ID =
 "543659745528-post6eq93ov5va98if83hk02o83tnoko.apps.googleusercontent.com";
+import 'react-quill/dist/quill.snow.css';
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

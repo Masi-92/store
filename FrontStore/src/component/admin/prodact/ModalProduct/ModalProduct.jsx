@@ -20,7 +20,8 @@ const ModalProduct = ({ open, handleOpen, id, getData }) => {
     image: "",
     price:"",
     discount:"",
-    category:""
+    category:"",
+    description:""
   });
 
   const handelEdit = () => {
@@ -115,6 +116,16 @@ setForm(res.data)
             value={form.discount}
             onChange={handleChang}
             name="discount"
+          />
+              <Typography className="-mb-2" variant="h6">
+              description
+          </Typography>
+          <Input
+            label="description"
+            size="lg"
+            value={form.description}
+            onChange={handleChang}
+            name="description"
           />
            <select
             value={form.category}

@@ -31,11 +31,7 @@ const ProductSlider = ({title ,list}) => {
       {list.map((product, index) => (
         <SwiperSlide key={index} virtualIndex={index}>
           <ProductCard
-            name={product.name}
-            image={product.image}
-            price={product.price}
-            discount={product.discount}
-            id={product._id}
+product={product}
           />
         </SwiperSlide>
       ))}

@@ -28,12 +28,7 @@ const ProductListCategory = () => {
       {products.map((item, index) => {
        
        return (  <ProductCard
-            discount={item.discount}
-            image={item.image}
-            name={item.name}
-            price={item.price}
-            id={item._id}
-            key={index}
+    product={item}
           />)
       
       })}
