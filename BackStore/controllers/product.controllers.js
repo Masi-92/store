@@ -1,7 +1,7 @@
 import productModel from "../models/productModel/product.model.js";
 
 export const getProduct = async (req, res) => {
-  const products = await productModel.find().populate("category");
+  const products = await productModel.find().populate("category").sort({ _id: -1 });
   if (!products) return res.send(400).send({ msg: "product not found" });
   res.send(products);
  // console.log(products);

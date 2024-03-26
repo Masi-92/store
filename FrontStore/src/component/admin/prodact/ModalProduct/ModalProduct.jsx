@@ -12,18 +12,35 @@ import InputImage from "../../../inputImage/inputImage";
 import { toast } from "react-toastify";
 import { editProduct, getProductById } from "../../../../Api/product";
 import { getCategory } from "../../../../Api/category.api";
+import ReactQuill from "react-quill";
 
 const ModalProduct = ({ open, handleOpen, id, getData }) => {
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
     name: "",
     image: "",
-    price:"",
-    discount:"",
-    category:"",
-    description:""
+    price: "",
+    discount: "",
+    category: "",
+    description: "",
   });
-
+  const quillModules = {
+    toolbar: [
+      [{ color: [] }],
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ size: ["small", false, "large", "huge"] }],
+      ["bold", "italic", "underline", "strike"],
+      ["link", "blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["clean"],
+    ],
+  };
+  const handleChangeDescription = (value) => {
+    form.description = value;
+    setForm({ ...form });
+  };
   const handelEdit = () => {
     editProduct(id, form)
       .then(() => {
@@ -34,29 +51,34 @@ const ModalProduct = ({ open, handleOpen, id, getData }) => {
         toast("product not found");
       });
   };
-  
+
   useEffect(() => {
     getCategory().then((res) => {
       setCategories(res.data);
     });
   }, []);
 
+  useEffect(() => {
+    if (id) getAllProductById();
+  }, [id]);
 
-useEffect(()=>{
-  if(id)
-getAllProductById()
+  const getAllProductById = () => {
+    getProductById(id).then((res) => {
+      setForm(res.data);
+    });
+  };
 
-},[id])
-
-  const getAllProductById =()=>{
-getProductById(id)
-.then((res)=>{
-setForm(res.data)
-
-})
-
-  }
-
+  useEffect(()=>{
+    if(!open){
+      setForm({image: "",
+      productName: "",
+      discount: "",
+      price: "",
+      description:"",
+      category: "",})
+    }
+    
+      },[open])
   const handleChangeImage = (value) => {
     form.image = value;
     setForm({ ...form });
@@ -73,9 +95,10 @@ setForm(res.data)
       size="xs"
       open={open}
       handler={handleOpen}
-      className="bg-transparent shadow-none"
+      className="bg-transparent "
+    
     >
-      <Card className="mx-auto w-full max-w-[24rem]">
+      <Card className="mx-auto w-full max-w-[28rem]  overflow-y-auto h-screen">
         <CardBody className="flex flex-col gap-4">
           <Typography variant="h4" color="blue-gray">
             Edit Category
@@ -95,7 +118,7 @@ setForm(res.data)
             Update Image
           </Typography>
           <InputImage value={form.image} setValue={handleChangeImage} />
-          
+
           <Typography className="-mb-2" variant="h6">
             change Price
           </Typography>
@@ -106,7 +129,7 @@ setForm(res.data)
             onChange={handleChang}
             name="price"
           />
-          
+
           <Typography className="-mb-2" variant="h6">
             change discount
           </Typography>
@@ -117,23 +140,23 @@ setForm(res.data)
             onChange={handleChang}
             name="discount"
           />
-              <Typography className="-mb-2" variant="h6">
-              description
-          </Typography>
-          <Input
-            label="description"
-            size="lg"
+       
+          <Typography className="-mb-2" variant="h6">
+            description
+            <ReactQuill
+            theme="snow"
             value={form.description}
-            onChange={handleChang}
-            name="description"
+            modules={quillModules}
+            onChange={handleChangeDescription}
           />
-           <select
+          </Typography>
+     
+          <select
             value={form.category}
             onChange={handleChang}
             name="category"
             type="text"
           >
-       
             {categories.map((item, index) => {
               return (
                 <option key={index} value={item._id}>

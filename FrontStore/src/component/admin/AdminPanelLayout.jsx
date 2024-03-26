@@ -14,11 +14,14 @@ import {
 import { Link, Outlet } from "react-router-dom";
 
 import { AdminHeader } from "./header/AdminHeared";
+import { useState } from "react";
 
 const AdminPanelLayout = () => {
   const [open, setOpen] = React.useState(false);
+  const [count,setCount] =useState()
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  
   return (
     <div>
       <React.Fragment>
@@ -87,7 +90,7 @@ const AdminPanelLayout = () => {
                 Create Category
                 <ListItemSuffix>
                   <Chip
-                    value="5"
+                    value="3"
                     size="sm"
                     color="green"
                     className="rounded-full"
