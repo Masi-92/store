@@ -7,7 +7,7 @@ export const favProductId = async (req, res) => {
   if (product) {
     await faveProduct.findOneAndDelete({ productId });
     return res.send({
-      message: "product removed from favorites",
+      msg: "product removed from favorites",
       isAdded: false,
     });
   }
