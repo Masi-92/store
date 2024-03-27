@@ -5,17 +5,8 @@ import ProductCard from "../../component/product/ProductCard ";
 const FavProduct = () => {
   const [favProduct, setFavProduct] = useState([]);
 
-  useEffect(() => {
-    favProductFun();
-  }, []);
 
-  const favProductFun = () => {
-    getAllFav().then((res) => {
-      setFavProduct(res.data);
-      getData()
-    });
-  };
-  
+  // getall data
   const getData = () => {
     getAllFav().then((res) => {
       setFavProduct(res.data);
@@ -29,7 +20,7 @@ const FavProduct = () => {
     <div className="flex ">
       favProduct
       {favProduct.map((item, index) => {
-        return <ProductCard key={index} product={item} />;
+        return <ProductCard getData={getData}  key={index} product={item} />;
       })}
     </div>
   );

@@ -12,6 +12,7 @@ const buySchema = new Schema(
       ref: "user",
       require: true,
     },
+    count:Number
   },
   { timestamps: { updatedAt: false, createdAt: true } }
 );

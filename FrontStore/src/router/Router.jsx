@@ -11,6 +11,7 @@ import ProductList from "../component/admin/ProductList";
 import ProductListCategory from "../pages/productList/ProductListCategory";
 import Details from "../pages/details/Details";
 import FavProduct from "../pages/FavProduct/favProduct";
+import BuyProduct from "../pages/buyProduct/BuyProduct";
 
 const Router = () => {
   return (
@@ -30,7 +31,7 @@ const Router = () => {
         <Route path="productList/:id" element={<ProductListCategory />} />
         <Route path="details/:id" element={<Details/>}/>
         <Route path="favProduct" element={<FavProduct/>}/>
-
+        <Route path="buyProduct" element={<BuyProduct/>}/>
       </Route>
     </Routes>
   );

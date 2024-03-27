@@ -4,14 +4,15 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import {  HeartAdd } from "iconsax-react";
+import {  Backward, HeartAdd } from "iconsax-react";
 import { useNavigate } from "react-router-dom";
 import { favProduct } from "../../Api/fav.api";
 import { toast } from "react-toastify";
+import { buyProduct } from "../../Api/buy.api";
 
 
 
-const ProductCard = ({ product}) => {
+const ProductCard = ({ product,getData} ) => {
   const navigate = useNavigate()
 const handelClick = ()=>{
 navigate(`/details/${product._id}`)
@@ -21,10 +22,18 @@ const toggleFavorit =()=>{
 favProduct(product._id)
 .then((res)=>{
 toast(res.data.msg)
+getData()
 })
 
 }
 
+const toggleBuy=()=>{
+buyProduct(product._id)
+.then((res)=>{
+  toast(res.data.msg)
+  getData()
+})
+}
 
   return (
     <Card className=" md:w-96  sm:w-80 w-40 border-2 ">
@@ -42,6 +51,7 @@ toast(res.data.msg)
           Price: {product.price}€
         </Typography>
  <HeartAdd onClick={toggleFavorit} /> 
+<Backward  onClick={toggleBuy}/> 
  
       </CardBody>
     </Card> 
