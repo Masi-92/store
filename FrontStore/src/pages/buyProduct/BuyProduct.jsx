@@ -48,9 +48,14 @@ const BuyProduct = () => {
   ];
 
   return (
-    <div className=" w-full mt-40 px-10 ">
- 
-      <DataTable columns={columns} data={buyProduct} />
+    <div >
+      <div className=" w-full  mt-40 px-10">
+        <div className=" bg-gray-400 border rounded-lg w-0 "> </div>
+        <div className="  m-auto gap-10 ">
+          {" "}
+          <DataTable columns={columns} data={buyProduct} />
+        </div>
+      </div>
     </div>
   );
 };
